@@ -15,13 +15,12 @@ public class PalavraController {
 	@Autowired
 	private PalavrasBibliotecaRepository repository;
 	
-	@RequestMapping("/biblioteca/{nome}")
+	@RequestMapping("/biblioteca")
 	public String listaPalavras(Model model, Biblioteca biblioteca) {
-
+		biblioteca.setId(2L);
 		Iterable<PalavrasBiblioteca> palavras = repository.findByBiblioteca(biblioteca);
 
 		model.addAttribute("palavras", palavras);
-
 		return "open-library";
 	}
 	
